@@ -1,0 +1,17 @@
+{
+  "name": "meany",
+  "version": "0.0.0",
+  "description": "bigger and better - testing express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "daronjones",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.11.2"
+  }
+}
