@@ -1,8 +1,10 @@
-var express = require('express');
-var morgan = require('morgan');
-var compression = require('compression');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
+var config = require('./config'),
+    express = require('express'),
+    morgan = require('morgan'),
+    compression = require('compression'),
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    session = require('express-session');
 
 module.exports = function(){
     //Start with an express app
@@ -23,6 +25,13 @@ module.exports = function(){
     //middleware used regardless of env:
     app.use(bodyParser.json());
     app.use(methodOverride());
+    
+    //use the session middleware and initialise it with session variables.
+    app.use(session({
+        secret: 'sessionSecret',
+        saveUninitialized: true,
+        resave: true
+    }));
     
     app.set('views', './app/views');
     app.set('view engine', 'ejs');
