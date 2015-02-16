@@ -1,6 +1,6 @@
 exports.render = function(req,res) {
     if (typeof(req.session.lastVisit) !== 'undefined'){
-        console.log('Cookie:lastVist ' + req.session.lastVisit);
+        console.log('Cookie:lastVisit ' + req.session.lastVisit);
     }
 
     req.session.lastVisit = new Date();

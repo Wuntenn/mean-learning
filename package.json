@@ -12,13 +12,13 @@
   "author": "daronjones",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.11.0",
-    "compression": "^1.4.0",
-    "cookie-parser": "^1.3.3",
-    "ejs": "^2.2.4",
-    "express": "^4.11.2",
-    "express-session": "^1.10.2",
-    "method-override": "^2.3.1",
-    "morgan": "^1.5.1"
+    "body-parser": "~1.10.0",
+    "compression": "~1.4.0",
+    "ejs": "~2.2.4",
+    "express": "~4.10.2",
+    "express-session": "~1.10.2",
+    "method-override": "~2.2.0",
+    "mongoose": "~3.8.23",
+    "morgan": "~1.4.1"
   }
 }
