@@ -28,7 +28,7 @@ module.exports = function(){
     
     //use the session middleware and initialise it with session variables.
     app.use(session({
-        secret: 'sessionSecret',
+        secret: 'fuckASecretSessionVariable',
         saveUninitialized: true,
         resave: true
     }));
