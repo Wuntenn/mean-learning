@@ -39,6 +39,7 @@ module.exports = function(){
     //functionality of index.server.routes file used in-place w/ expess app as arguement.
     //appends routes to the express application.
     require('../app/routes/index.server.routes')(app);
+    require('../app/routes/users.server.routes')(app);
 
     //Use express static middleware to handle files in ./public dir
     app.use(express.static('./public'));
