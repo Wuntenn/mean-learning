@@ -1,4 +1,4 @@
-var config = require('./env/' + process.env.NODE_ENV),
+var config = require('./config'),
     express = require('express'),
     morgan = require('morgan'),
     compression = require('compression'),
@@ -28,7 +28,7 @@ module.exports = function(){
     
     //use the session middleware and initialise it with session variables.
     app.use(session({
-        secret: 'fuckASecretSessionVariable',
+        secret: config.sessionSecret,
         saveUninitialized: true,
         resave: true
     }));
