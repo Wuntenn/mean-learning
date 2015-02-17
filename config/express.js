@@ -1,4 +1,4 @@
-var config = require('./config'),
+var config = require('./env/' + process.env.NODE_ENV),
     express = require('express'),
     morgan = require('morgan'),
     compression = require('compression'),
