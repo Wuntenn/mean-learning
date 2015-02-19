@@ -21,3 +21,21 @@ exports.list = function(req, res, next) {
         }    
     });
 };
+
+exports.read = function(req, res) {
+    console.log(req.user)
+    res.json(req.user); 
+};
+
+exports.userByID = function(req, res, next, id) {
+    User.findOne({
+        _id: id
+    }, function(err, user) {
+        if (err){
+            return next(err);
+        } else {
+            req.user = user;
+            next();
+        }    
+    });
+};
