@@ -50,7 +50,7 @@ exports.update = function(req, res, next) {
             res.json(user);
         }    
     });
-}
+};
 
 exports.delete = function(req, res, next) {
     req.user.remove( function(err) {
