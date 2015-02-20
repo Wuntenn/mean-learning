@@ -12,7 +12,7 @@ module.exports = function(mongoose){
         password:String,
         website: {
             type: String,
-            set: function(url){
+            get: function(url){
                 if (!url){
                    return url;
                 } else {
@@ -28,6 +28,11 @@ module.exports = function(mongoose){
             default: Date.now
         },
     });
+    
+    UserSchema.virtual('fullname').get( function() {
+        return this.firstName + ' ' + this.lastName;
+    });
 
+    userSchema.set('toJSON', { getters: true, virtuals: true });
     mongoose.model('User', UserSchema);
 }
