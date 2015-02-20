@@ -35,6 +35,8 @@ exports.userByID = function(req, res, next, id) {
             return next(err);
         } else {
             req.user = user;
+	
+console.log(req.user);
             next();
         }    
     });
@@ -46,6 +48,16 @@ exports.update = function(req, res, next) {
             return next(err);
         } else {
             res.json(user);
+        }    
+    });
+}
+
+exports.delete = function(req, res, next) {
+    req.user.remove( function(err) {
+        if (err){
+            return next(err);
+        } else {
+            res.json(req.user);
         }    
     });
 };
