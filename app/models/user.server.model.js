@@ -4,10 +4,14 @@ module.exports = function(mongoose){
     var UserSchema = new Schema({
         firstName:String,
         lastName:String,
-        email:String,
+        email:{
+            type: String,
+            index: true
+        },
         userName:{
             type: String,
-            trim: true
+            trim: true,
+            unique: true
         },
         password:String,
         website: {
@@ -31,8 +35,17 @@ module.exports = function(mongoose){
     
     UserSchema.virtual('fullname').get( function() {
         return this.firstName + ' ' + this.lastName;
+    }).set( function(fullname){
+        var splitname = fullname.split(' ');
+        this.firstName = splitname[0] || '';
+        this.secondName = splitname[1] || '';
     });
 
-    userSchema.set('toJSON', { getters: true, virtuals: true });
+    UserSchema.set('toJSON', { getters: true, virtuals: true });
+
+    UserSchema.statics.findOneByUser = function(username, callback) {
+       user.findOne({ username: new RexExp(username, 'i') }, callback); 
+    };
+
     mongoose.model('User', UserSchema);
 }
