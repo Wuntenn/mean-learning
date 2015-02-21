@@ -7,13 +7,23 @@ module.exports = function(mongoose){
         email:{
             type: String,
             index: true
+            match: '/.+\@.+\..+/';
         },
         userName:{
             type: String,
             trim: true,
-            unique: true
+            unique: true,
+            required: true
         },
-        password:String,
+        password:{
+            type: String,
+            validate: [
+                function(password){
+                    return password.length >= 6
+                },
+                "Make sure your password is greater than 5 characters long" 
+            ]
+        },
         website: {
             type: String,
             get: function(url){
