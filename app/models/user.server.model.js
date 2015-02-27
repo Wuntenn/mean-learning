@@ -4,15 +4,29 @@ module.exports = function(mongoose){
     var UserSchema = new Schema({
         firstName:String,
         lastName:String,
-        email:String,
+        email:{
+            type: String,
+            index: true
+            match: '/.+\@.+\..+/';
+        },
         userName:{
             type: String,
-            trim: true
+            trim: true,
+            unique: true,
+            required: true
         },
-        password:String,
+        password:{
+            type: String,
+            validate: [
+                function(password){
+                    return password.length >= 6
+                },
+                "Make sure your password is greater than 5 characters long" 
+            ]
+        },
         website: {
             type: String,
-            set: function(url){
+            get: function(url){
                 if (!url){
                    return url;
                 } else {
@@ -28,6 +42,20 @@ module.exports = function(mongoose){
             default: Date.now
         },
     });
+    
+    UserSchema.virtual('fullname').get( function() {
+        return this.firstName + ' ' + this.lastName;
+    }).set( function(fullname){
+        var splitname = fullname.split(' ');
+        this.firstName = splitname[0] || '';
+        this.secondName = splitname[1] || '';
+    });
+
+    UserSchema.set('toJSON', { getters: true, virtuals: true });
+
+    UserSchema.statics.findOneByUser = function(username, callback) {
+       user.findOne({ username: new RexExp(username, 'i') }, callback); 
+    };
 
     mongoose.model('User', UserSchema);
 }
