@@ -6,8 +6,8 @@ module.exports = function(mongoose){
         lastName:String,
         email:{
             type: String,
-            index: true
-            match: '/.+\@.+\..+/';
+            index: true,
+            match: '/.+\@.+\..+/'
         },
         userName:{
             type: String,
