@@ -4,7 +4,8 @@ var config = require('./config'),
     compression = require('compression'),
     bodyParser = require('body-parser'),
     methodOverride = require('method-override'),
-    session = require('express-session');
+    session = require('express-session'),
+    passport = require('passport');
 
 module.exports = function(){
     //Start with an express app
@@ -25,7 +26,7 @@ module.exports = function(){
     //middleware used regardless of env:
     app.use(bodyParser.json());
     app.use(methodOverride());
-    
+       
     //use the session middleware and initialise it with session variables.
     app.use(session({
         secret: config.sessionSecret,
@@ -35,7 +36,10 @@ module.exports = function(){
     
     app.set('views', './app/views');
     app.set('view engine', 'ejs');
-        
+     
+    app.use(passport.initialize());
+    app.use(passport.session());
+    
     //functionality of index.server.routes file used in-place w/ expess app as arguement.
     //appends routes to the express application.
     require('../app/routes/index.server.routes')(app);
