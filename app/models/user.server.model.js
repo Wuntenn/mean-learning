@@ -74,16 +74,21 @@ module.exports = function(mongoose){
             username: possibleUsername
         }, function (err, user) {
             if (!err) {
-                
+                if (!user) {
+                    callback(possibleUsername);
+                } else {
+                    return _this.findUniqueUsername(username, (suffix || 0) + 1, callback);
+                } 
             } else {
                 callback(null);
             } 
         }
     }
-
-    UserSchema.statics.findOneByUser = function(username, callback) {
-       user.findOne({ username: new RexExp(username, 'i') }, callback); 
-    };
+    
+    UserSchema.set('toJSON', {
+        getters: true,
+        setters: true
+    });
 
     mongoose.model('User', UserSchema);
 }
