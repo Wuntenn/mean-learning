@@ -73,3 +73,10 @@ exports.signout = function() {
     req.logout();
     res.redirect('/');
 }
+
+export.render = function() {
+    res.sender('index', {
+        title: 'Hello World',
+        userFullName: req.user ? req.user.fullName : ''
+    });
+}
