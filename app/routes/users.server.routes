@@ -1,16 +1,20 @@
 //This var users will get all methods from the controller.
 //We then call each of those methods for specific route below.
-var users = require('../controllers/users.server.controller');
+var users = require('../controllers/users.server.controller'),
+    passport = require('passport');j;
 
 module.exports = function(app) {
-    app.route('/users')
-        .post(users.create)
-        .get(users.list);
+    app.route('/signup')
+        .get(users.renderSignup)
+        .post(users.signup);
     
-    app.route('/users/:userId')
-        .get(users.read)
-        .put(users.update)
-	    .delete(users.delete);
+    app.route('/signin')
+        .get(users.renderSignin)
+        .post(passport.authenticate('local', {
+            successRedirect: '/', 
+            failureRedirect: '/signin', 
+            failureFlash: true 
+        }));
 
-    app.param('userId', users.userByID);
+    app.get('/signout', users.signout);
 };
