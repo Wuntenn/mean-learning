@@ -1,34 +1,33 @@
-module.exports = function(mongoose){
+module.exports = function(mongoose) {
     var crypto = require('crypto'),
         Schema = mongoose.Schema;
 
     var UserSchema = new Schema({
-        firstName:String,
-        lastName:String,
-        email:{
+        firstName: String,
+        lastName: String,
+        email: {
             type: String,
             index: true,
             match: ['/.+\@.+\..+/', "Please fill in the address"]
         },
-        userName:{
+        userName: {
             type: String,
             trim: true,
             required: 'Username is required',
             unique: true
         },
-        password:{
+        password: {
             type: String,
             validate: [
-                function(password){
-                    return password.length >= 6
-                },
-                "Make sure your password is greater than 5 characters long" 
+                function(password) {
+                    return password && password > 6;
+                }, 'Make sure your password is greater than 6 characters long'
             ]
         },
-        salt {
+        salt: {
             type: String
         },
-        provider {
+        provider: {
             type: String,
             required: 'Provider is required'
         },
@@ -64,9 +63,7 @@ module.exports = function(mongoose){
         return this.password === this.hashPassword(password);
     };
 
-    UserSchema.set('toJSON', { getters: true, virtuals: true });
-
-    UserSchema.statics.findUniqueUsername = function() { 
+    UserSchema.statics.findUniqueUsername = function(username, suffix, callback) { 
         var _this = this;
         var possibleUsername = username + (suffix || '');
 
@@ -82,8 +79,8 @@ module.exports = function(mongoose){
             } else {
                 callback(null);
             } 
-        }
-    }
+        });
+    };
     
     UserSchema.set('toJSON', {
         getters: true,

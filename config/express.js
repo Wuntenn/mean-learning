@@ -6,7 +6,7 @@ var config = require('./config'),
     methodOverride = require('method-override'),
     session = require('express-session'),
     passport = require('passport'),
-    flash = require('flash');
+    flash = require('connect-flash');
 
 module.exports = function(){
     //Start with an express app

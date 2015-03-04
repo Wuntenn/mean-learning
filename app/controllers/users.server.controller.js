@@ -22,7 +22,7 @@ var getErrorMessage = function(err) {
     return message;
 };
 
-exports.renderSignin = function(err, res, next) {
+exports.renderSignin = function(req, res, next) {
     if (!req.user) {
         res.render('signin', {
             title: 'Sign-in Form',
@@ -63,20 +63,13 @@ exports.signup = function(req, res, next) {
                 if (err) return next(err);
                 return res.redirect('/');
             });
-        }
+        });
     } else {
         return res.redirect('/');
     }
 }
 
-exports.signout = function() {
+exports.signout = function(req, res) {
     req.logout();
     res.redirect('/');
-}
-
-export.render = function() {
-    res.sender('index', {
-        title: 'Hello World',
-        userFullName: req.user ? req.user.fullName : ''
-    });
 }
