@@ -1,5 +1,4 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-//console.log('Server.js sets env var: ' + process.env.NODE_ENV);
 
 //require stuff
 var mongoose = require('./config/mongoose'),

@@ -34,6 +34,7 @@ exports.renderSignin = function(req, res, next) {
 };
 
 exports.renderSignup = function(req, res, next ) {
+    console.log(req.user);
     if (!req.user) {
         res.render('signup', {
             title: 'Sign-up Form',
@@ -44,9 +45,9 @@ exports.renderSignup = function(req, res, next ) {
     }
 };
 
-
 exports.signup = function(req, res, next) {
-    if (!res.user) {
+    console.log(req.user);
+    if (!req.user) {
         var user = new User(req.body);
         var message = null;
 
@@ -67,7 +68,7 @@ exports.signup = function(req, res, next) {
     } else {
         return res.redirect('/');
     }
-}
+};
 
 exports.signout = function(req, res) {
     req.logout();

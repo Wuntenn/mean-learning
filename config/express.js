@@ -12,9 +12,9 @@ module.exports = function(){
     //Start with an express app
     var app = express();
 
-    //Now configure the express app:
+    //Now configure the express app
     
-    //middleware by env type:
+    //middleware by env type
     if (process.env.NODE_ENV == 'development'){
         app.use(morgan('dev'));
     } else if (process.env.NODE_ENV == 'production') {
