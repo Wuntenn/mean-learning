@@ -8,7 +8,7 @@ var UserSchema = new Schema({
     email: {
         type: String,
         index: true,
-        match: [/.+\@.+\..+/, "Please fill in the address"]
+        match: [/.+\@.+\..+/, "Invalid email address. Please correct the address"]
     },
     userName: {
         type: String,
