@@ -1,6 +1,6 @@
 //This var users will get all methods from the controller.
 //We then call each of those methods for specific route below.
-var users = require('../controllers/users.server.controller'),
+var users = require('../../app/controllers/users.server.controller'),
     passport = require('passport');
 
 module.exports = function(app) {

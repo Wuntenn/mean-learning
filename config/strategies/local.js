@@ -4,7 +4,7 @@ var passport = require('passport'),
 
 module.exports = function() {
     passport.use(new LocalStrategy(function(username, password, done) {
-        console.log('looking for user');
+        console.log('local - looking for user');
         User.findOne({
             username: username
         }, function(err, user) {
@@ -29,4 +29,4 @@ module.exports = function() {
             return done(null, user);
         });
     }));
-}
+};

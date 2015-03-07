@@ -7,10 +7,9 @@ var UserSchema = new Schema({
     lastName: String,
     email: {
         type: String,
-        index: true,
         match: [/.+\@.+\..+/, "Invalid email address. Please correct the address"]
     },
-    userName: {
+    username: {
         type: String,
         trim: true,
         required: 'Username is required',
@@ -20,7 +19,7 @@ var UserSchema = new Schema({
         type: String,
         validate: [
             function(password) {
-                return password && password > 6;
+                return password && password.length > 6;
             }, 'Make sure your password is greater than 6 characters long'
         ]
     },
@@ -39,12 +38,12 @@ var UserSchema = new Schema({
     }
 });
 
-UserSchema.virtual('fullname').get( function() {
+UserSchema.virtual('fullName').get( function() {
     return this.firstName + ' ' + this.lastName;
-}).set( function(fullname){
-    var splitname = fullname.split(' ');
-    this.firstName = splitname[0] || '';
-    this.secondName = splitname[1] || '';
+}).set( function(fullName){
+    var splitName = fullName.split(' ');
+    this.firstName = splitName[0] || '';
+    this.lastName = splitName[1] || '';
 });
 
 UserSchema.pre('save', function(next) {
@@ -56,7 +55,7 @@ UserSchema.pre('save', function(next) {
 });
 
 UserSchema.methods.hashPassword = function(password) {
-   return cryto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
+   return crypto.pbkdf2Sync(password, this.salt, 10000, 64).toString('base64');
 };
 
 UserSchema.methods.authenticate = function(password) {

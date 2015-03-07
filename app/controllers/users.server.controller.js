@@ -33,8 +33,8 @@ exports.renderSignin = function(req, res, next) {
     } 
 };
 
-exports.renderSignup = function(req, res, next ) {
-    console.log(req.user);
+exports.renderSignup = function(req, res, next) {
+    console.log('users controller - req.users: ', req.user);
     if (!req.user) {
         res.render('signup', {
             title: 'Sign-up Form',
@@ -48,17 +48,21 @@ exports.renderSignup = function(req, res, next ) {
 exports.signup = function(req, res, next) {
     if (!req.user) {
         var user = new User(req.body);
+        console.log('users controller: signup - user ', user);
         var message = null;
 
         user.provider = 'local';
 
         user.save(function(err) {
             if (err) {
+                console.log('err: ', err);
                 var message = getErrorMessage(err);
-                
+
+                console.log('users controller: signup - message ', message);
                 req.flash('error', message);
                 return res.redirect('/signup');
             }
+            console.log('user object: ', user);
             req.login(user, function(err) {
                 if (err) return next(err);
                 return res.redirect('/');
