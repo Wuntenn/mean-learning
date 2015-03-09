@@ -72,3 +72,4 @@ exports.signout = function(req, res) {
     req.logout();
     res.redirect('/');
 }
+
