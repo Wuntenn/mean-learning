@@ -71,11 +71,17 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
     }, function (err, user) {
         if (!err) {
             if (!user) {
+                //no user exists by this name so execute the callback returning this name
                 callback(possibleUsername);
             } else {
+                //user has been found so add a suffix and try again to find a unique name
+                //We create the suffix of 1 (0 + 1) or the suffix from this attempt.
+                //We also recycle the callback reference. It will eventually find an unused user
+                //When it does we want to be able to use this callback.
                 return _this.findUniqueUsername(username, (suffix || 0) + 1, callback);
             } 
         } else {
+            //error give null user
             callback(null);
         } 
     });
