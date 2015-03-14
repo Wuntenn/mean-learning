@@ -17,6 +17,7 @@ module.exports = function(app) {
         }));
 
     app.get('/oauth/facebook', passport.authenticate('facebook', {
+        scope: 'email',
         failureRedirect: '/signin' 
     }));
 
