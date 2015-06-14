@@ -1,3 +1,4 @@
+'use strict';
 var passport = require('passport'),
     url = require('url'),
     FacebookStrategy = require('passport-facebook').Strategy,
@@ -12,11 +13,6 @@ module.exports = function() {
         passReqToCallback: true
     },
     function(req, token, refreshToken, profile, done) {
-        console.log('profile: ', profile);
-        console.log('req: ', req);
-        console.log('token: ', token);
-        console.log('refreshToken: ', token);
-
         var providerData = profile._json;
         providerData.accessToken = token;
         providerData.refreshToken = refreshToken;

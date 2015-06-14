@@ -1,3 +1,5 @@
+'use strict';
+
 var User = require('mongoose').model('User'),
     passport = require('passport');
 
@@ -74,7 +76,8 @@ exports.signout = function(req, res) {
 };
 
 exports.saveOAuthUserProfile = function(req, profile, done) {
-    console.log('profile: ', profile);
+    //console.log('profile: ', profile);
+    //console.log('res: ', res);
     User.findOne({
         provider: profile.provider,
         providerId: profile.providerId
@@ -89,13 +92,7 @@ exports.saveOAuthUserProfile = function(req, profile, done) {
                     profile.username = availableUsername;
                     user = new User(profile);
                     user.save(function(err) {
-                        if (err) {
-                            var message = getErrorMessage(err);
-
-                            req.flash('error', message);
-                            return res.redirect('/signup');
-                        }
-                        return done(err, user);
+                       return done(err, user);
                     });
                 });
             } else {

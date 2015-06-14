@@ -1,3 +1,4 @@
+'use strict';
 var passport = require('passport'),
     url = require('url'),
     TwitterStrategy = require('passport-twitter').Strategy,
@@ -12,13 +13,14 @@ module.exports = function() {
         passReqToCallback: true
     },
     function(req, token, tokenSecret, profile, done) {
+        console.log('profile: ', profile);
+
         var providerData = profile._json;
         providerData.token = token;
         providerData.tokenSecret = tokenSecret;
         
         var providerUserProfile = {
-            fullname: profile.displayName,
-            userName: profile.username,
+            fullname: profile.screen_name,
             provider: 'twitter',
             providerId: profile.id,
             providerData: providerData
