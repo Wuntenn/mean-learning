@@ -5,5 +5,8 @@
     "Daron Jones <daronalerts@gmail.com>"
   ],
   "description": "What the fuck you looking at!?",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.1"
+  }
 }

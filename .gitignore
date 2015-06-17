@@ -1,5 +1,5 @@
 node_modules/*
-
+public/lib/*
 # IDEA Ignores #
 ################
 *.iml
