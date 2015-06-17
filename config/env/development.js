@@ -1,3 +1,4 @@
+'use strict';
 //Development configuration options 
 //console.log('Using development config');
 module.exports  = {
@@ -12,5 +13,10 @@ module.exports  = {
         clientID: 'eHo1yAKcQVLFzD2wqcMj9zRR0',
         clientSecret: 'hcW3VdDkz6tzdtEpFfJx6YUL6NCw9hwJ5F03wESpICYSpODI2q',
         callbackURL: 'http://localhost:3000/oauth/twitter/callback'
+    },
+    google: {
+        clientID: '514569792468-bj8pv03ugtogjp7i99ssf9mgep24idfk.apps.googleusercontent.com',
+        clientSecret: 'OAG1xpAKBeC3BdVxXZrqWoF3',
+        callbackURL: 'http://localhost:3000/oauth/google/callback'
     }
 };
