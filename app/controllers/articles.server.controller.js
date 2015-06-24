@@ -12,7 +12,7 @@ var getErrorMessage = function(err) {
     }
 };
 
-export.create = function(req, res) {
+exports.create = function(req, res) {
     var article = new Article(req.body);
     article.creator = req.user;
 
@@ -27,14 +27,28 @@ export.create = function(req, res) {
     });
 };
 
-export.list = function(req, res) {
+exports.list = function(req, res) {
     Article.find().sort('-created').populate('creator', 'firstName lastName fullName').exec(function(err, articles) {
         if (err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
             });
         } else {
-
+            res.json(articles);
         }
     });
 };
+
+exports.articleByID = function(req, res, next, id) {
+    Article.findById(id).populate('creator', 'firstName lastName fullName').exec(function(err, article) {
+        if (err) return next(err);
+        if (!article) return next(new Error('Failed to load article ' + id));
+
+        req.article = article;
+        next();
+    });
+};
+
+exports.read = function(req, res) {
+    res.json(req.article);
+}
