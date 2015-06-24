@@ -5,8 +5,9 @@ var config = require('./config'),
 module.exports = function() {
     var db = mongoose.connect(config.db);
 
-    //add the schema to the db (different from book)
+    //add the schema's to the db
     require('../app/models/user.server.model'); 
+    require('../app/models/article.server.model'); 
 
     return db;
 };
