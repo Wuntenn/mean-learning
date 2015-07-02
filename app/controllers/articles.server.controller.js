@@ -96,7 +96,7 @@ exports.hasAuthorisation = function(req, res, next) {
     //if the creator of the article is not the person who issued the request
     if (req.article.creator.id != req.user.id) {
         return res.status(403).send({
-            message: 'User is not authorised"
+            message: 'User is not authorised'
         });
     }
 };
