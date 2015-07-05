@@ -1,11 +1,10 @@
 'use strict';
-angular.module('articles').factory('Articles', ['$resource', function(){
-    return $resoure('api/articles/:articleId', {
+angular.module('articles').factory('Articles', ['$resource', function($resource) {
+    return $resource('api/articles/:articleId', {
         articleId: '@_id'
     }, {
         update: {
             method: 'PUT'
         }
     });
-
 }]);

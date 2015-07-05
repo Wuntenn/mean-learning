@@ -6,7 +6,7 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$routePa
 ]);
 
 $scope.create = function() {
-    var article = new Article({
+    var article = new Articles({
         title: this.title,
         content: this.content
     });
@@ -24,7 +24,7 @@ $scope.find = function() {
 
 $scope.findOne = function() {
     $scope.article = Articles.get({
-        articleID: $routeParams.articleId 
+        articleId: $routeParams.articleId 
     });
 };
 
@@ -32,10 +32,10 @@ $scope.update = function() {
     $scope.article.$update(function() {
         $location.path('articles/', + $scope.article._id);
     }, function(errorResponse) {
-        $scrope.error = errorResponse.data.message; 
+        $scope.error = errorResponse.data.message; 
     });
 };
-$scope.delete = function() {
+$scope.delete = function(article) {
     if (article) {
         //Here you are on the list view so you had to specify which article you wanted to delete
         //by calling the $scope.delete() with an article.
