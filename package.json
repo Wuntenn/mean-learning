@@ -12,6 +12,7 @@
   "author": "daronjones",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.4.1",
     "body-parser": "~1.10.0",
     "compression": "~1.4.0",
     "connect-flash": "~0.1.1",
@@ -22,8 +23,8 @@
     "mongoose": "~3.8.23",
     "morgan": "~1.4.1",
     "passport": "~0.2.1",
-    "passport-local": "~1.0.0",
     "passport-facebook": "^2.0.0",
+    "passport-local": "~1.0.0",
     "passport-twitter": "~1.0.2"
   }
 }
