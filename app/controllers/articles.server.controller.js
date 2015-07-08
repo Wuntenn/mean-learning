@@ -99,4 +99,5 @@ exports.hasAuthorisation = function(req, res, next) {
             message: 'User is not authorised'
         });
     }
+    next();
 };
