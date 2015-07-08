@@ -1,13 +1,14 @@
 <section ng-controller="ExampleController">
     <div data-ng-show="!authentication.user">
         <a href="/signup">Signup</a>
-        <a href="/signup">Signin</a>
+        <a href="/signin">Signin</a>
     </div>
-    </div data-ng-show="authentication.user">
-    <h1>Hello <span data-ng-bind="authentication.user.fullName"></span></h1>
-    <a href="/signout">Signout</a>
-    <ul>
-        <li><a href="/#!/articles">List articles</a></li>
-        <li><a href="/#!/articles/create">Create articles</a></li>
-    </ul>
+    <div data-ng-show="authentication.user">
+        <h1>Hello <span data-ng-bind="authentication.user.fullName"></span></h1>
+        <a href="/signout">Signout</a>
+        <ul>
+            <li><a href="/#!/articles">List articles</a></li>
+            <li><a href="/#!/articles/create">Create articles</a></li>
+        </ul>
+    </div>
 </section>

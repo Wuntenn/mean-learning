@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 var getErrorMessage = function(err) {
     if (err.errors){
         for (var errName in err.errors){
-            if (err.errors[errName].message) return  err.errors[errName].message
+            if (err.errors[errName].message) return  err.errors[errName].message;
         }
     } else {
         return 'Unknown server error';
@@ -81,15 +81,6 @@ exports.delete = function(req, res) {
             res.json(article);
         }
     });
-};
-
-exports.requiresLogin = function(req, res, next) {
-    if (!req.isAuthenticated()) {
-        return res.status(401).send({
-            message: 'User is not logged in'
-        });
-    }
-    next();
 };
 
 exports.hasAuthorisation = function(req, res, next) {

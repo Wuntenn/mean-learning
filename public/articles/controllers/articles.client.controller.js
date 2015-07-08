@@ -6,6 +6,8 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$routePa
 ]);
 
 $scope.create = function() {
+	//Articles is the factory contstructor service (see public/articles/services/articles.client.service.js)
+	//here we instantiate an article object from the factory.
     var article = new Articles({
         title: this.title,
         content: this.content
@@ -38,7 +40,7 @@ $scope.update = function() {
 $scope.delete = function(article) {
     if (article) {
         //Here you are on the list view so you had to specify which article you wanted to delete
-        //by calling the $scope.delete() with an article.
+        //by calling the $scope.delete(some_article_to_delete).
         //the $remove takes care of business however we must manually delete the article from the
         //list.
         article.$remove(function() {
@@ -49,8 +51,7 @@ $scope.delete = function(article) {
             }
         });
     } else {
-        //Here we are in the read view hence we don't call this method with the article as a parameter.
-        //In this case it just deletes the article in the $scope object.
+        //Here we are in the read view and delete was called like $scope.delete() so we end up in here.
         $scope.article.$remove(function() {
             $location.path('articles');
         });
