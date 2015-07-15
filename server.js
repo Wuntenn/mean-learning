@@ -8,7 +8,7 @@ var mongoose = require('./config/mongoose'),
 
 //use stuff
 var db = mongoose(),
-    app = express(),
+    app = express(db),
     passport = passport();
 
 app.listen(3000);
