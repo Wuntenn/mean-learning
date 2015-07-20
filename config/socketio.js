@@ -1,5 +1,5 @@
 'use strict';
-  var config = require('./config'),
+var config = require('./config'),
     cookieParser = require('cookie-parser'),
     passport = require('passport');
 
@@ -18,7 +18,7 @@ module.exports = function(server, io, mongoStore) {
 
                //set up a new passport session with this socket
                 passport.initialize()(socket.request, {}, function() {
-                    passport.session()(socket,request, {}, function() {
+                    passport.session()(socket.request, {}, function() {
                         //check that the passport session was created properly
                         if (socket.request.user) {
                             next(null, true);
@@ -32,6 +32,6 @@ module.exports = function(server, io, mongoStore) {
     });
 
     io.on('connection', function(socket) {
-        /* .... */
+        require('../app/controllers/chat.server.controller')(io, socket);
     });
 };

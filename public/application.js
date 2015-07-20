@@ -1,6 +1,6 @@
 'use strict';
 var mainApplicationModuleName = 'mean',
-    mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource', 'ngRoute', 'users', 'example', 'articles']);
+    mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource', 'ngRoute', 'users', 'example', 'articles','chat']);
 
 mainApplicationModule.config(['$locationProvider',
     function($locationProvider) {
