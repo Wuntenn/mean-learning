@@ -1,5 +1,5 @@
 'use strict';
-  var config = require('./config'),
+var config = require('./config'),
     http = require('http'),
     socketio = require('socket.io'),
     express = require('express'),
