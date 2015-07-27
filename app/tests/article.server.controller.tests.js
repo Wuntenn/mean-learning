@@ -14,8 +14,8 @@ describe('Article Controller Unit Tests:', function() {
             firstName: 'Full',
              lastName: 'Name',
              fullName: 'Full Name',
-             provider: 'DaronCorp',
              email: 'test@test.com',
+             provider: 'DaronCorp',
              username: 'username',
              password: 'password'
         });
@@ -45,8 +45,7 @@ describe('Article Controller Unit Tests:', function() {
                 .end(function(err, res) {
                     if (err) return done(err);
 
-                    res.body.should.be.an.Array;
-                    res.body.should.have.a.lengthOf(1);
+                    res.body.should.be.instanceOf(Array).and.have.a.lengthOf(1);
                     res.body[0].should.have.property('title', article.title);
                     res.body[0].should.have.property('content', article.content);
                     
@@ -61,8 +60,7 @@ describe('Article Controller Unit Tests:', function() {
                 .expect(200)
                 .end(function(err, res) {
                     if (err) return done(err);
-                    res.body.should.be.an.Object;
-                    res.body.should.have.property('title', article.title);
+                    res.body.should.be.an.instanceOf(Object).and.have.property('title', article.title);
                     res.body.should.have.property('content', article.content);
 
                     done();

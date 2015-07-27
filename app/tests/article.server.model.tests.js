@@ -14,6 +14,7 @@ describe('Article Model Unit Tests:', function() {
              lastName: 'Name',
              fullName: 'Full Name',
              email: 'test@test.com',
+             provider: 'DaronCorp',
              username: 'username',
              password: 'password'
         });
