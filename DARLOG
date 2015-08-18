@@ -1,0 +1,37 @@
+Issues with error:
+Error: No selenium server jar found at the specified location (/Users/daron/Sites/mean/horizontal-express-bootstrap/node_modules/grunt-protractor-runner/node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar)
+
+goto grunt protractors selenium bin folder:
+
+cd /Users/daron/Sites/mean/horizontal-express-bootstrap/node_modules/grunt-protractor-runner/node_modules/protractor/bin
+
+and run ./webdriver-manager update from in there
+
+This fixes the error.
+
+
+See below from: http://stackoverflow.com/questions/22193692/protractor-selenium-could-not-find-chromedriver-at-on-windows
+
+
+
+I was facing this error too and by the time I read the tutorial, it did not cover how to install protractor and the webdriver as local dependencies to your project (which are located in ./node_modules).
+
+If this is what you prefer (probably because you might want to use grunt-protractor-runner and run your test later in a continuous build manner as I neede) instead of installing it globally, this solution worked for me:
+
+Install protractor:
+npm install protractor --save-dev
+
+Install selenium and the webdrivers with the webdriver-manager by running:
+./node_modules/protractor/bin/webdriver-manager update
+
+After calling this command have a look at ./node_modules/protractor and it subfolders to verify it. A folder called selenium with the chromedriver in should be available in it.
+
+Note that as protractor was not installed as "global", calling it from the command line will result in a "commnad not found" error. You can run it instead with this command: ./node_modules/protractor/bin/protractor
+
+Additionaly, it might be a good idea to add a script definition to your package.json, so that next time you install all your dependencies from zero, npm setup the webdrivers automaticaly. For that add this to your package.json file: 
+ 
+ "scripts": {
+     "postinstall": "./node_modules/protractor/bin/webdriver-manager update"
+ }
+
+Hope this helps you further...

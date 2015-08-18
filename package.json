@@ -43,5 +43,8 @@
     "mocha": "^2.2.5",
     "should": "^7.0.2",
     "supertest": "^1.0.1"
+  },
+  "scripts": {
+    "postinstall": "echo 'npm install script: updating protractors local webdriver copy' && ./node_modules/protractor/bin/webdriver-manager update"
   }
 }
