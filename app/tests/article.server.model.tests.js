@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true, jasmine: true */
+"use strict";
+
 var app = require('../../server'),
     should = require('should'),
     mongoose = require('mongoose'),

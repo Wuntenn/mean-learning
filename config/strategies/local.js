@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true */
+"use strict";
+
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     User = require('mongoose').model('User');

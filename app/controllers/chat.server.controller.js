@@ -1,4 +1,5 @@
-'use strict';
+/* jshint node: true */
+"use strict";
 
 module.exports = function(io, socket) {
     io.emit('chatMessage', {
@@ -27,4 +28,4 @@ module.exports = function(io, socket) {
            username: socket.request.user.username
        }); 
     });
-}
+};

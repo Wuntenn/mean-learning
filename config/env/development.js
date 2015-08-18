@@ -1,6 +1,6 @@
-'use strict';
-//Development configuration options 
-//console.log('Using development config');
+/* jshint node: true */
+"use strict";
+
 module.exports  = {
     db: 'mongodb://localhost/mean-book',
     sessionSecret: 'MySecret',

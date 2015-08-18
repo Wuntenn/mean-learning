@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true */
+"use strict";
+
 //This var users will get all methods from the controller.
 //We then call each of those methods for specific route below.
 var users = require('../controllers/users.server.controller'),

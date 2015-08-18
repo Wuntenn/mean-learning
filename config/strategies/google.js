@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true */
+"use strict";
+
 var passport = require('passport'),
     url = require('url'),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,

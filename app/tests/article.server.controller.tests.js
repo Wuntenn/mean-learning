@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true, jasmine: true */
+"use strict";
+
 var app = require('../../server'),
     request = require('supertest'),
     should = require('should'),

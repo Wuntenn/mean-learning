@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true */
+"use strict";
+
 var config = require('./config'),
     http = require('http'),
     socketio = require('socket.io'),

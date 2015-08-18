@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true */
+"use strict";
+
 var mongoose = require('mongoose'),
     crypto = require('crypto'),
     Schema = mongoose.Schema;

@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true */
+"use strict";
+
 var config = require('./config'),
     cookieParser = require('cookie-parser'),
     passport = require('passport');

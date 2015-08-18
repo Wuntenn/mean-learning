@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true */
+"use strict";
+
 var passport = require('passport'),
     url = require('url'),
     TwitterStrategy = require('passport-twitter').Strategy,

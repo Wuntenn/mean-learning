@@ -1,4 +1,5 @@
-'use strict';
+/* jshint node: true */
+"use strict";
 
 var User = require('mongoose').model('User'),
     passport = require('passport');

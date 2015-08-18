@@ -1,4 +1,6 @@
-'use strict';
+/* jshint node: true */
+"use strict";
+
 var mongoose = require('mongoose'),
     Article = mongoose.model('Article');
 
@@ -67,7 +69,7 @@ exports.update = function(req, res) {
             res.json(article);
         }
     });
-}
+};
 
 exports.delete = function(req, res) {
     var article = req.article;

@@ -1,4 +1,5 @@
-'use strict';
+/* jshint node: true */
+"use strict";
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 //require stuff
